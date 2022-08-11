@@ -16,10 +16,10 @@ Create a new blazor server project in visual studio 2022 and :
 
 3-Add  Configuration and services to Startup.cs 
 
-    `services.AddDbContext<DataContext>(options =>
+    services.AddDbContext<DataContext>(options =>
             options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
     services.AddRazorPages();
-    `
+    
     
 4- Add connection string to appsettings.json
 
@@ -60,7 +60,7 @@ so create a new Razor Component called <b>ManageSchool.razor</b> inside the “P
     }
 }
  </code>  </pre>
-<b>Form components in Blazor:</b>
+### Form components in Blazor:
 Blazor Provides Built-in Form Component that are used to receive and validate the user input. These inputs are validated when they are changed and also when the form is submitted. These components resides in the Microsoft.AspNetCore.Components.Forms namespace. In the below table I have listed all of them.
 
 Component	Description
@@ -86,5 +86,21 @@ InputRadioGroup	Use InputRadio components with the InputRadioGroup component to 
 InputTextArea	It renders a html select element.
 
 
-    
+### Blazor Validation Components
+Blazor provides 3 Validation components to perform data validations, and show Validation messages. These are:
+
+Component	Description
+
+DataAnnotationsValidator This component integrates the validation attributes applied to Model Class (Data Annotations) into the Blazor Validation system.
+
+ValidationMessage	It displays validation error messages for a single property.
+
+ValidationSummary	It displays validation error messages for the entire form.
+
+validation-errors	The ValidationSummary component generates a top level ‘ul’ container for the summary of validation messages and assigns validation-errors CSS class 
+
+validation-message	The top level ‘ul’ container is populated with ‘li’ elements for each validation message. These li elements are assigned with validation-message
+
+7-Add @page "/ManageLocation" compoent with validation
+
     
