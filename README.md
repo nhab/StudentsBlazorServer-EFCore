@@ -9,32 +9,43 @@ The server in turn handles the event and sends back the updated HTML (which is b
 
 ## Instruction to create Initial Committed project:
 Create a new blazor server project in visual studio 2022 and :
+
 1- Create the models: School.cs, Location.cs, Student.cs
+
 2- Create the DbContext : DataContext.cs
+
 3-Add  Configuration and services to Startup.cs 
+
     `services.AddDbContext<DataContext>(options =>
             options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
-    services.AddRazorPages();`
+    services.AddRazorPages();
+    `
+    
 4- Add connection string to appsettings.json
+
 5- Performing Migrations:
+    `
     dotnet ef migrations add Migration1
     dotnet ef database update
+    `
 6-Insert Data:
     In order to use Entity Framework Core in Blazor you will need to Inject the Data Context to the Razor Component by using the [Inject] attribute as shown below:
    `[Inject]
-    public DataContext Context { get; set; }`
-    so create a new Razor Component called <b>ManageSchool.razor</b> inside the “Pages” folder of your app and inside the @code inject and insert the data:
-<code>
+    public DataContext Context { get; set; }
+    `
+    
+so create a new Razor Component called <b>ManageSchool.razor</b> inside the “Pages” folder of your app and inside the @code inject and insert the data:
+<pre><code>
 @page "/ManageSchool"
  
-<h1 class="bg-info text-white">Manage School</h1>
-<h2 class="text-success bg-light p-2">Add a School</h2>
-<h3 class="text-warning bg-light p-2">@FormSubmitMessage</h3>
-<div class="form-group">
-    <label>Name:</label>
-    <input class="form-control" type="text" @bind="SchoolData.Name" />
-    <button class="m-1 btn btn-primary" @onclick="Create">Click</button>
-</div>
+&lt;h1 class="bg-info text-white">Manage School</h1>
+&lt;h2 class="text-success bg-light p-2">Add a School</h2>
+&lt;h3 class="text-warning bg-light p-2">@FormSubmitMessage</h3>
+&lt;div class="form-group">
+    &lt;label>Name:</label>
+    &lt;input class="form-control" type="text" @bind="SchoolData.Name" />
+    &lt;button class="m-1 btn btn-primary" @onclick="Create">Click</button>
+&lt;/div>
 @code {
     [Inject]
     public DataContext Context { get; set; }
@@ -48,7 +59,7 @@ Create a new blazor server project in visual studio 2022 and :
         SchoolData = new School();
     }
 }
- </code>  
+ </code>  </pre>
 <b>Form components in Blazor:</b>
 Blazor Provides Built-in Form Component that are used to receive and validate the user input. These inputs are validated when they are changed and also when the form is submitted. These components resides in the Microsoft.AspNetCore.Components.Forms namespace. In the below table I have listed all of them.
 
