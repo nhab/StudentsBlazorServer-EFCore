@@ -64,15 +64,27 @@ so create a new Razor Component called <b>ManageSchool.razor</b> inside the “P
 Blazor Provides Built-in Form Component that are used to receive and validate the user input. These inputs are validated when they are changed and also when the form is submitted. These components resides in the Microsoft.AspNetCore.Components.Forms namespace. In the below table I have listed all of them.
 
 Component	Description
+
 EditForm	It renders a form element that also performs data validations.
+
 InputText	It renders an input element of type text. It can be bind to a C# value.
+
 InputNumber	It renders an input element of type number. It can be bind to a C# int, long, float, double, or decimal values. Here “T” is the type.
+
 InputFile	It renders an input element of type file.
+
 InputDate	It renders an input element of type date. It can be bind to a C# DateTime or DateTimeOffset values.
+
 InputCheckbox	It renders an input element of type checkbox and that is bound to a C# bool property.
+
 InputSelect	It renders a html select element. T is the type
+
 InputRadio	It renders a input type radio element.
+
 InputRadioGroup	Use InputRadio components with the InputRadioGroup component to create a radio button group.
+
 InputTextArea	It renders a html select element.
+
+
     
     
