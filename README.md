@@ -94,4 +94,61 @@ validation-message	|The top level ‘ul’ container is populated with ‘li’ 
 
 7-Add @page "/ManageLocation" compoent with validation
 
+
+## Handling Events in blazor Example :
+
+    <button @onclick="SendMail">
+        Send Email
+    </button> 
+    @code {
+        private void SendMail(MouseEventArgs e)
+        {
+            ...
+        }
+    }
+
+## Working with JavaScript in Blazor
+Calling JavaScript function from Blazor Components requires IJSRuntime Interface of the Microsoft.JSInterop which you can inject into the Razor component as shown below:
+
+    @inject IJSRuntime JS
     
+Alternately, you can also do the injection with the [Inject] attribute as shown below:
+
+    [Inject] 
+    public IJSRuntime JSRuntime { get; set; }
+    
+Then you can Call JavaScript functions from Blazor.The full full code example:
+
+    @using Microsoft.JSInterop
+    @inject IJSRuntime JS;
+
+    @page "/CallJS"
+
+    <h1 class="bg-info text-white">Call JavaScript from Blazor</h1>
+
+    <div class="form-group">
+        <button class="btn btn-secondary" @onclick="ShowAlert">Show JavaScript Alert</button>
+    </div>
+
+    @code {
+        public async void ShowAlert()
+        {
+            await JS.InvokeVoidAsync("JSAlert");
+        }
+    }
+
+Next create a JavaScript file called example.js inside the wwwrooot/JS folder of you app. Add the function called JSAlert that shows the alert box with a text “Hello”. The code is given below:
+
+    function JSAlert() {
+        alert("Hello");
+    }
+Now create a script tag with “src” targeted to this JavaScript file in the _Host.cshtml file after the call to blazor.server.js as highlighted in the below code:
+
+    <body>
+        <div class="m-1 p-1">
+            <component type="typeof(BlazorJS.App)" render-mode="ServerPrerendered" />
+        </div>
+
+        <script src="_framework/blazor.server.js"></script>
+        <script src="~/JS/example.js"></script>
+    </body>
