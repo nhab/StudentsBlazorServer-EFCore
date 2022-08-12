@@ -3,7 +3,11 @@
 A Students management system using Blazor Server and EF core.
 
 ## How Blazor Works
-Blazor maintains a “Persistent” HTTP connection between the Client (i.e. Browser) and the Server using SignalR. When an event, such as a button click, is performed by the client then this information about the event is sent to the server over the SignalR connection.
+There are two kinds of Blazor projects:
+* Blazor Server projects which needs to be hosted in the server
+* Blazor WebAssembly which Once the app is downloaded to the browser it becomes fully functionable and so there is no server-side dependency.
+
+Blazor server maintains a “Persistent” HTTP connection between the Client (i.e. Browser) and the Server using SignalR. When an event, such as a button click, is performed by the client then this information about the event is sent to the server over the SignalR connection.
 
 The server in turn handles the event and sends back the updated HTML (which is based on what the event performed) to the client. The updated HTML is not the entire page HTML but only a small part and hence the response is much faster. The browser, on receiving the response, updates the user interface (UI).
 
