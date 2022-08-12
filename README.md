@@ -94,6 +94,7 @@ validation-message	|The top level ‘ul’ container is populated with ‘li’ 
 
 7-Add @page "/ManageLocation" compoent with validation
 
+8- finished
 
 ## Handling Events in blazor Example :
 
@@ -152,3 +153,29 @@ Now create a script tag with “src” targeted to this JavaScript file in the _
         <script src="_framework/blazor.server.js"></script>
         <script src="~/JS/example.js"></script>
     </body>
+
+## Blazor number based Paging
+
+There are just 2 things we need to create which are:
+
+1. A C# class called PagingInfo.cs which keeps track of paging.
+
+    public class PagingInfo
+    {
+        public int TotalItems { get; set; }
+        public int ItemsPerPage { get; set; }
+        public int CurrentPage { get; set; }
+        public int TotalPages
+        {
+            get
+            {
+                return (int)Math.Ceiling((decimal)TotalItems /
+                    ItemsPerPage);
+            }
+        }
+    }
+    
+2. A Razor Component called Paging.Razor where this paging will be shown.
+
+## Aditonal resources
+<a href="https://www.yogihosting.com/blazor-first-application/">Creating First Application in Blazor from scratch</a>
