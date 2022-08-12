@@ -7,7 +7,7 @@ Blazor maintains a “Persistent” HTTP connection between the Client (i.e. Bro
 
 The server in turn handles the event and sends back the updated HTML (which is based on what the event performed) to the client. The updated HTML is not the entire page HTML but only a small part and hence the response is much faster. The browser, on receiving the response, updates the user interface (UI).
 
-## Instruction to create Initial Committed project:
+## Instruction to create the base project,Initialy committed to git:
 Create a new blazor server project in visual studio 2022 and :
 
 1- Create the models: School.cs, Location.cs, Student.cs
